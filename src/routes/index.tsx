@@ -4,6 +4,10 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import hero from "@/assets/hero.jpg";
 import about from "@/assets/about.jpg";
+import saicaLogo from "@/assets/memberships/saica.png";
+import saitLogo from "@/assets/memberships/sait.png";
+import cimaLogo from "@/assets/memberships/cima.jpg";
+import saibaLogo from "@/assets/memberships/saiba.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -38,7 +42,12 @@ const process = [
   { n: "04", t: "Ongoing Partnership", d: "Quarterly reviews and proactive advice — we earn the right to be your trusted adviser." },
 ];
 
-const memberships = ["SAICA", "SAIT", "SAIBA", "CIMA"];
+const memberships = [
+  { name: "South African Institute of Chartered Accountants", short: "SAICA", logo: saicaLogo },
+  { name: "South African Institute of Tax Professionals", short: "SAIT", logo: saitLogo },
+  { name: "Southern African Institute for Business Accountants", short: "SAIBA", logo: saibaLogo },
+  { name: "Chartered Institute of Management Accountants", short: "CIMA", logo: cimaLogo },
+];
 
 function Home() {
   return (
@@ -160,12 +169,44 @@ function Home() {
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
               {memberships.map((m) => (
-                <span key={m} className="text-sm font-bold tracking-wider text-ink-soft">{m}</span>
+                <span key={m.short} className="text-sm font-bold tracking-wider text-ink-soft">{m.short}</span>
               ))}
             </div>
             <Link to="/about" className="mt-9 inline-flex items-center gap-2 rounded-full border border-ink px-6 py-3 text-sm font-semibold text-ink transition hover:bg-ink hover:text-white">
               Read our story <ArrowRight className="h-4 w-4" />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* REGISTERED MEMBER OF */}
+      <section className="border-b border-border bg-background">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <div className="text-center">
+            <span className="eyebrow">Accreditations</span>
+            <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">Registered Member Of</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-ink-soft">
+              Our practice is registered with South Africa's leading professional bodies — assuring you
+              of the highest standards of competence, ethics and accountability.
+            </p>
+          </div>
+          <div className="mt-14 grid grid-cols-2 gap-6 md:grid-cols-4">
+            {memberships.map((m) => (
+              <div
+                key={m.short}
+                className="group flex flex-col items-center justify-center rounded-2xl border border-border bg-card p-8 transition hover:-translate-y-1 hover:border-brand hover:shadow-lg hover:shadow-brand/10"
+              >
+                <div className="flex h-24 w-full items-center justify-center">
+                  <img
+                    src={m.logo}
+                    alt={`${m.short} — ${m.name}`}
+                    className="max-h-20 w-auto max-w-full object-contain"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="mt-5 text-center text-xs leading-relaxed text-ink-soft">{m.name}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
