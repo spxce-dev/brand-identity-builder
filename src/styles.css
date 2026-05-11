@@ -113,17 +113,17 @@
 @utility eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  gap: 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-brand);
-}
-@utility eyebrow::before {
-  content: "";
-  width: 28px;
-  height: 1px;
-  background: var(--color-brand);
-  display: inline-block;
+  &::before {
+    content: "";
+    width: 32px;
+    height: 1px;
+    background: currentColor;
+    display: inline-block;
+  }
 }
